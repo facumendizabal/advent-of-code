@@ -37,7 +37,7 @@ impl Move {
         }
     }
 
-    fn loses(&self) -> Self {
+    fn losses_to(&self) -> Self {
         self.beats().beats()
     }
 }
@@ -87,7 +87,7 @@ fn main() {
             let my_move = match required_result {
                 "X" => opponents_move.beats(),
                 "Y" => opponents_move.clone(),
-                "Z" => opponents_move.loses(),
+                "Z" => opponents_move.losses_to(),
                 _ => panic!(),
             };
 
