@@ -5,7 +5,6 @@ fn main() {
     let input = fs::read_to_string(file_path).expect("Error reading file");
 
     let total_elfs_calories: Vec<i32> = input
-        .trim()
         .split("\n\n")
         .map(|elf| elf.split("\n").map(|cal| cal.parse::<i32>().unwrap()).sum())
         .collect();

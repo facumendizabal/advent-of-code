@@ -16,7 +16,25 @@ fn main() {
         final_priority + get_item_priority(shared_item)
     });
 
+    let total_priority_2 = rucksacks
+        .chunks(3)
+        .fold(0, |final_priority, rucksack_group| {
+            let shared_item: char = rucksack_group[0]
+                .chars()
+                .reduce(|acum, c| {
+                    if rucksack_group[1].contains(c) && rucksack_group[2].contains(c) {
+                        c
+                    } else {
+                        acum
+                    }
+                })
+                .unwrap();
+
+            final_priority + get_item_priority(shared_item)
+        });
+
     println!("Total priority -> {}", { total_priority });
+    println!("Total priority 2 -> {}", { total_priority_2 });
 }
 
 fn get_item_priority(item: char) -> i32 {
